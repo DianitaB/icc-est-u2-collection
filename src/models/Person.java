@@ -1,40 +1,56 @@
 package models;
 
-public class Person implements Comparable <Person> {
-    private String name;
-    private int age;
-
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = age;
+public class Person implements Comparable<Person> {
+    private String nombre;
+    private int edad;
+    private int cedula;
+    
+    public Person(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+    public Person(String nombre, int edad, int cedula) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.cedula = cedula;
     }
 
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-
-    public int getAge() {
-        return age;
+    public int getEdad() {
+        return edad;
     }
-
-    public void setAge(int age) {
-        this.age = age;
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
+    
+    public int getCedula() {
+        return cedula;
+    }
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
+    }
+    
 
     @Override
     public String toString() {
-        return "Person -> Name: " + name + ", age: " + age + "]";
+        return "[nombre=" + nombre + ", edad=" + edad + "]";
     }
-
+    
     @Override
     public int compareTo(Person o) {
-        int comN = this.name.compareTo(o.getName());
-        if(comN != 0) return comN;
-        int comE = Integer.compare(this.age, o.getAge());
+        int comN = this.nombre.compareTo(o.getNombre());
+        if (comN != 0) {
+            return comN;
+        }
+        int comE = Integer.compare(this.edad, o.getEdad());
         return comE;
     }
+    
+    
+    
 }

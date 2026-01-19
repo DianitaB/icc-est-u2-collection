@@ -1,8 +1,11 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import controller.MaquinasController;
+import maps.EjerciciosMapas;
+import maps.Maps;
 import models.Maquina;
 import models.Node;
 import models.Person;
@@ -11,43 +14,83 @@ import structures.sets.Sets;
 public class App {
     public static void main(String[] args) throws Exception {
         Sets setsClase = new Sets();
-        Set<String> hashSet = setsClase.construirHashSet();
-        System.out.println(hashSet);
-        System.out.println(hashSet.size());
-        System.out.println(hashSet.contains("A"));
-        System.out.println("A".hashCode());
-        System.out.println(Integer.hashCode(10));
+        // Set<String> hashSet = setsClase.construirHashSet();
+        // System.out.println(hashSet);
+        // System.out.println(hashSet.size());
+        // System.out.println(hashSet.contains("A"));
+        // System.out.println("A".hashCode());
+        // System.out.println(Integer.hashCode(10));
 
-        String a1 = "A";
-        String a2 = "A";
-        System.out.println(a1.hashCode());
-        System.out.println(a2.hashCode());
-        System.out.println(a1.equals(a2));
-        System.out.println(a1 == a2);
+        // String a1 = "A";
+        // String a2 = "A";
+        // System.out.println(a1.hashCode());
+        // System.out.println(a2.hashCode());
+        // System.out.println(a1.equals(a2));
+        // System.out.println(a1 == a2);
 
-        Node<String> n1 = new Node<>("A");
-        Node<String> n2 = new Node<>("A");
-        System.out.println(n1.hashCode());
-        System.out.println(n2.hashCode());
-        System.out.println(n1.hashCode() == n2.hashCode());
+        // Node<String> n1 = new Node<>("A");
+        // Node<String> n2 = new Node<>("A");
+        // System.out.println(n1.hashCode());
+        // System.out.println(n2.hashCode());
+        // System.out.println(n1.hashCode() == n2.hashCode());
 
-        Set<Person> treePersons = setsClase.personsTreeSet();
-        System.out.print(treePersons);
-        runMaquina();
+        // Set<Person> treePersons = setsClase.personsTreeSet();
+        // System.out.print(treePersons);
 
+        // runMaquina();
+        // runMaps();
+        runEjercicios();
+
+    }
+
+    private static void runEjercicios() {
+        EjerciciosMapas ejercicios = new EjerciciosMapas();
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+                21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                11, 12, 13, 14, 15, 16, 17, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 18, 19, 20,
+                11, 12, 13, 14, 15, 16, 17, 18, 19, 20);
+        Map<Integer, Integer> resultado = ejercicios.contarDuplicados(list);
+        System.out.println("Estudiante : Diana Borja");
+        System.out.println("Ejercicio 1: Contar Duplicados");
+        System.out.println(resultado);
+
+        List<Integer> list2 = Arrays.asList(
+                4, 5, 1, 2, 5, 4, 3, 2, 1, 6,
+                7, 3, 8, 9, 6, 7, 10);
+        int resultado2 = ejercicios.contarNoDuplicados(list2);
+        System.out.println("Estudiante: Diana Borja");
+        System.out.println("Ejercicio 2: Contar el No Duplicado");
+        System.out.println(resultado2);
+
+        List<String[]> entradas = List.of(
+                new String[] { "Ana", "80" },
+                new String[] { "Luis", "90" },
+                new String[] { "Carlos", "70" },
+                new String[] { "Ana", "85" },
+                new String[] { "Sofia", "95" },
+                new String[] { "Luis", "88" },
+                new String[] { "Pedro", "60" },
+                new String[] { "Maria", "75" });
+
+        System.out.println("Estudiante: Diana Borja");
+        System.out.print("Ranking puntajes ");
+        System.out.println();
+        ejercicios.rankingPuntajes(entradas);
     }
 
     private static void runMaquina() {
         List<Maquina> maquinas = crearMaquinas();
         MaquinasController controller = new MaquinasController();
-        Set<Maquina>  maquina0 = controller.ordenarPorSubRed(maquinas);
+        Set<Maquina> maquina0 = controller.ordenarPorSubRed(maquinas);
         for (Maquina maquina : maquina0) {
             System.out.println(maquina.getSubRed() + " - " + maquina.getNombre());
         }
         System.out.println(maquina0.size());
     }
-        
-        static List<Maquina> crearMaquinas() {
+
+    static List<Maquina> crearMaquinas() {
 
         List<Maquina> maquinas = Arrays.asList(
                 new Maquina("Controlador20", "155.25.220.238", Arrays.asList(21, 30, 29, 16)),
@@ -102,4 +145,24 @@ public class App {
                 new Maquina("DB13", "71.248.50.86", Arrays.asList(17, 11, 12)));
         return maquinas;
     }
+
+    private static void runMaps() {
+        Maps maps = new Maps();
+        Map<String, Integer> hashMap = maps.construirHashMap();
+        System.err.println(hashMap);
+
+        Map<String, Integer> treeMap = maps.connstruirTreeMap();
+        System.out.println(treeMap);
+
+        Map<Person, Integer> treePersMap = maps.construirTreeM();
+        System.out.println(treePersMap);
+        maps.printFilter(treePersMap);
+
+        Map<Integer, Person> treeMapInvertido = maps.construirTreeMapPersonasInverso();
+        System.out.println(treeMapInvertido);
+
+        Map<Integer, Person> personObj = maps.construirTreeMapPersonasObj();
+        System.out.println(personObj);
+    }
+
 }
