@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -78,6 +79,20 @@ public class App {
         System.out.print("Ranking puntajes ");
         System.out.println();
         ejercicios.rankingPuntajes(entradas);
+
+        Map<String, Integer> datos = new HashMap<>();
+        datos.put("Computacion-Ana", 85);
+        datos.put("Computacion-Luis", 92);
+        datos.put("Electronica-Carlos", 78);
+        datos.put("Electronica-Maria", 88);
+        datos.put("Computacion-Pedro", 90);
+        datos.put("Mecanica-Juan", 80);
+        datos.put("Mecanica-Sofia", 95);
+        System.out.println("Estudiante: Diana Borja");
+        System.out.println("Maximo por Grupo");
+        ejercicios.maximoPorCarrera(datos);
+        
+
     }
 
     private static void runMaquina() {
